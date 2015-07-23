@@ -1,20 +1,23 @@
 package model.allergy;
 
-import Types.AllergyType;
+import Types.AllergyCategory;
+import Types.Serverity;
 
-import javax.persistence.Column;
 import javax.persistence.Id;
 
 /**
  * Created by dineshgurumurthy on 7/21/15.
  */
 
-public class AllergyDescription {
+public class MedicalAllergy {
 
     @Id
     private long allergyId;
     private String name;
     private String reactionTo;
+    private AllergyCategory allergyCategory;
+
+    private Serverity serverity;
 
 
     public long getAllergyId() {
@@ -41,4 +44,19 @@ public class AllergyDescription {
         this.reactionTo = reactionTo;
     }
 
+    public AllergyCategory getAllergyCategory() {
+        return allergyCategory;
+    }
+
+    public void setAllergyCategory(AllergyCategory allergyCategory) {
+        this.allergyCategory = allergyCategory;
+    }
+
+    public Serverity getServerity() {
+        return serverity;
+    }
+
+    public void setServerity(Serverity serverity) {
+        this.serverity = serverity;
+    }
 }

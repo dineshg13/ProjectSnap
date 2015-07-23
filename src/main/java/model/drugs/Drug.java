@@ -1,7 +1,5 @@
 package model.drugs;
 
-import model.allergy.SideEffects;
-
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
@@ -16,9 +14,7 @@ public class Drug {
     private String drugDescription;
 
 
-
     private Manufacturer manufacturer;
-
 
 
 }
