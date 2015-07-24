@@ -1,6 +1,9 @@
 package model.insurance;
 
+import model.AbstractBaseModel;
+
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import java.util.Set;
@@ -8,7 +11,8 @@ import java.util.Set;
 /**
  * Created by dineshgurumurthy on 7/21/15.
  */
-public class InsuranceProvider {
+@Entity
+public class InsuranceProvider extends AbstractBaseModel {
 
     @Id
     @Column(name = "insurance_id")

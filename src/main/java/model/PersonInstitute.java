@@ -1,7 +1,14 @@
 package model;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
 /**
  * Created by dineshgurumurthy on 7/21/15.
  */
-public class PersonInstitute {
+@Entity
+public class PersonInstitute extends AbstractBaseModel {
+
+    @Id
+    private long instituteId;
 }

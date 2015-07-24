@@ -3,18 +3,23 @@ package model.allergy;
 import Types.AllergyCategory;
 import Types.Serverity;
 
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.Id;
 
 /**
  * Created by dineshgurumurthy on 7/21/15.
  */
 
+@Entity
 public class MedicalAllergy {
 
     @Id
     private long allergyId;
     private String name;
     private String reactionTo;
+    @Enumerated(EnumType.STRING)
     private AllergyCategory allergyCategory;
 
     private Serverity serverity;

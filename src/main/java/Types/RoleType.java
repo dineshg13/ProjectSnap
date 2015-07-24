@@ -1,9 +1,9 @@
 package Types;
 
 /**
- * Created by dineshgurumurthy on 7/20/15.
+ * Created by dineshgurumurthy on 7/23/15.
  */
-public enum RoleTypes {
+public enum RoleType {
     PATIENT,
     NURSE,
     USER,
@@ -11,7 +11,4 @@ public enum RoleTypes {
     PRIMARY_PHYSICAN,
     CLINICAL_CLERK,
     PHARMACIST
-
-    ;
-
 }

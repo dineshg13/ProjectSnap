@@ -1,18 +1,18 @@
 package model;
 
-import model.user.User;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
-import javax.persistence.Id;
+import model.insurance.InsuranceCoverage;
+import model.user.Role;
+
+import javax.persistence.*;
 import java.util.Date;
+import java.util.Set;
 
 /**
  * Created by dineshgurumurthy on 7/20/15.
  */
 @Entity
-public class Person {
+public class Person extends AbstractBaseModel {
 
     @Id
     private Long personId;
@@ -22,8 +22,24 @@ public class Person {
     private String placeOfBirth;
     private String relation;
 
-    private User user;
 
+    @ManyToMany(mappedBy = "persons")
+    private Set<Role> roles;
+
+    @ManyToMany
+    @JoinTable(name = "person_insurance_coverage", joinColumns = {@JoinColumn(name = "person_id")}, inverseJoinColumns = {@JoinColumn(name = "coverage_id")})
+    private Set<InsuranceCoverage> coverages;
+
+    @OneToMany(mappedBy = "person")
+    private Set<PersonIdentity> identities;
+
+    public Set<InsuranceCoverage> getCoverages() {
+        return coverages;
+    }
+
+    public void setCoverages(Set<InsuranceCoverage> coverages) {
+        this.coverages = coverages;
+    }
 
     public Long getPersonId() {
         return personId;
@@ -65,11 +81,11 @@ public class Person {
         this.placeOfBirth = placeOfBirth;
     }
 
-    public User getUser() {
-        return user;
+    public Set<Role> getRoles() {
+        return roles;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setRoles(Set<Role> roles) {
+        this.roles = roles;
     }
 }

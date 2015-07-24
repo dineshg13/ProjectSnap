@@ -1,10 +1,11 @@
 package model.user;
 
 
-import model.Person;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
-import javax.persistence.*;
-import java.sql.Date;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import java.util.Set;
 
 /**
@@ -23,9 +24,8 @@ public class User {
     private String phoneNumber ;
 
 
-    @OneToMany(mappedBy = "user",fetch = FetchType.LAZY)
-    private Set<Person> persons;
-
+    @JsonManagedReference
+    @OneToMany(mappedBy = "user")
     private Set<Role> roles;
 
 
@@ -35,14 +35,6 @@ public class User {
 
     public void setRoles(Set<Role> roles) {
         this.roles = roles;
-    }
-
-    public Set<Person> getPersons() {
-        return persons;
-    }
-
-    public void setPersons(Set<Person> persons) {
-        this.persons = persons;
     }
 
     public String getPhoneNumber() {

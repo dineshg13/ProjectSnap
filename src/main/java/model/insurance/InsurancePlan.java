@@ -1,19 +1,46 @@
 package model.insurance;
 
-import javax.persistence.Column;
+import model.AbstractBaseModel;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.ManyToOne;
 
 /**
  * Created by dineshgurumurthy on 7/21/15.
  */
 @Entity
-public class InsurancePlan {
+public class InsurancePlan extends AbstractBaseModel {
 
     @Id
-    private long planId;
-    private InsuranceProvider provider;
+    private long insurancePlanId;
     private String description;
-    private String coverageDetails;
+
+    @ManyToOne
+    private InsuranceProvider insuranceProvider;
+
+    public InsuranceProvider getInsuranceProvider() {
+        return insuranceProvider;
+    }
+
+    public void setInsuranceProvider(InsuranceProvider insuranceProvider) {
+        this.insuranceProvider = insuranceProvider;
+    }
+
+    public long getInsurancePlanId() {
+        return insurancePlanId;
+    }
+
+    public void setInsurancePlanId(long insurancePlanId) {
+        this.insurancePlanId = insurancePlanId;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
 }
