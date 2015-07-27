@@ -18,6 +18,7 @@ public class PermittedOperation extends AbstractBaseModel {
     private OperationType operationType;
 
     @ManyToOne
+    @JoinColumn(name = "role_id")
     private Role role;
 
     public Role getRole() {

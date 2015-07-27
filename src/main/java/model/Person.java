@@ -1,6 +1,7 @@
 package model;
 
 
+import model.allergy.MedicalAllergy;
 import model.insurance.InsuranceCoverage;
 import model.user.Role;
 
@@ -31,7 +32,62 @@ public class Person extends AbstractBaseModel {
     private Set<InsuranceCoverage> coverages;
 
     @OneToMany(mappedBy = "person")
-    private Set<PersonIdentity> identities;
+    private Set<PersonalIdentity> identities;
+
+
+    @OneToMany(mappedBy = "person")
+    private Set<MedicalReport> medicalReports;
+
+    @ManyToMany
+    @JoinTable(name = "person_medical_institute", joinColumns = {@JoinColumn(name = "person_id")}, inverseJoinColumns = {@JoinColumn(name = "medical_institute_id")})
+    private Set<MedicalInstitute> medicalInstitutes;
+
+
+    @OneToMany(mappedBy = "person")
+    private Set<MedicalInteraction> medicalInteractions;
+
+    @OneToMany(mappedBy = "person")
+    private Set<MedicalAllergy> medicalAllergies;
+
+    public Set<MedicalAllergy> getMedicalAllergies() {
+        return medicalAllergies;
+    }
+
+    public void setMedicalAllergies(Set<MedicalAllergy> medicalAllergies) {
+        this.medicalAllergies = medicalAllergies;
+    }
+
+    public Set<MedicalInteraction> getMedicalInteractions() {
+        return medicalInteractions;
+    }
+
+    public void setMedicalInteractions(Set<MedicalInteraction> medicalInteractions) {
+        this.medicalInteractions = medicalInteractions;
+    }
+
+    public Set<MedicalInstitute> getMedicalInstitutes() {
+        return medicalInstitutes;
+    }
+
+    public void setMedicalInstitutes(Set<MedicalInstitute> medicalInstitutes) {
+        this.medicalInstitutes = medicalInstitutes;
+    }
+
+    public Set<PersonalIdentity> getIdentities() {
+        return identities;
+    }
+
+    public void setIdentities(Set<PersonalIdentity> identities) {
+        this.identities = identities;
+    }
+
+    public Set<MedicalReport> getMedicalReports() {
+        return medicalReports;
+    }
+
+    public void setMedicalReports(Set<MedicalReport> medicalReports) {
+        this.medicalReports = medicalReports;
+    }
 
     public Set<InsuranceCoverage> getCoverages() {
         return coverages;

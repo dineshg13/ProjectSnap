@@ -2,11 +2,10 @@ package model.allergy;
 
 import Types.AllergyCategory;
 import Types.Serverity;
+import model.Person;
 
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.sql.Date;
 
 /**
  * Created by dineshgurumurthy on 7/21/15.
@@ -19,11 +18,43 @@ public class MedicalAllergy {
     private long allergyId;
     private String name;
     private String reactionTo;
+
     @Enumerated(EnumType.STRING)
     private AllergyCategory allergyCategory;
 
     private Serverity serverity;
 
+    private Date startDate;
+    private Date endDate;
+
+    @ManyToOne
+    @JoinColumn(name = "person_id")
+    private Person person;
+
+
+    public Date getStartDate() {
+        return startDate;
+    }
+
+    public void setStartDate(Date startDate) {
+        this.startDate = startDate;
+    }
+
+    public Date getEndDate() {
+        return endDate;
+    }
+
+    public void setEndDate(Date endDate) {
+        this.endDate = endDate;
+    }
+
+    public Person getPerson() {
+        return person;
+    }
+
+    public void setPerson(Person person) {
+        this.person = person;
+    }
 
     public long getAllergyId() {
         return allergyId;

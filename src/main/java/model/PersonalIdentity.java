@@ -9,14 +9,14 @@ import javax.persistence.*;
  */
 
 @Entity
-public class PersonIdentity extends AbstractBaseModel {
+public class PersonalIdentity extends AbstractBaseModel {
 
     @Id
     private long identityId;
 
     @Enumerated(EnumType.STRING)
     private IDType idType;
-    private String values;
+    private String value;
 
     @ManyToOne
     @JoinColumn(name = "person_id")
@@ -38,11 +38,19 @@ public class PersonIdentity extends AbstractBaseModel {
         this.idType = idType;
     }
 
-    public String getValues() {
-        return values;
+    public String getValue() {
+        return value;
     }
 
-    public void setValues(String values) {
-        this.values = values;
+    public void setValue(String value) {
+        this.value = value;
+    }
+
+    public Person getPerson() {
+        return person;
+    }
+
+    public void setPerson(Person person) {
+        this.person = person;
     }
 }
